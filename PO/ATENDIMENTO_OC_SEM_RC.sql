@@ -1,31 +1,31 @@
 /* -------------------------------------------------------------------------
   SCRIPT:     ATENDIMENTO_OC_SEM_RC.sql
-  DESCRI«√O:  Consulta que identifica pedidos de compra (OC) do tipo STANDARD,
-              BLANKET e PLANNED que n„o possuem vÌnculo com requisiÁ„o (RC),
-              mas possuem centro de custo, com o objetivo de an·lise de
+  DESCRI√á√ÉO:  Consulta que identifica pedidos de compra (OC) do tipo STANDARD,
+              BLANKET e PLANNED que n√£o possuem v√≠nculo com requisi√ß√£o (RC),
+              mas possuem centro de custo, com o objetivo de an√°lise de
               atendimento de materiais e rastreabilidade de recebimentos.
 
   OBJETIVO:
-     - Identificar fluxos de OC que n„o tiveram requisiÁ„o associada
-     - Validar itens, prazos, recebimentos e roteiros de inspeÁ„o
+     - Identificar fluxos de OC que n√£o tiveram requisi√ß√£o associada
+     - Validar itens, prazos, recebimentos e roteiros de inspe√ß√£o
      - Avaliar fornecedores e contratos envolvidos
-     - Apontar possÌveis inconsistÍncias ou oportunidades de melhoria
+     - Apontar poss√≠veis inconsist√™ncias ou oportunidades de melhoria
 
-  INFORMA«’ES RETORNADAS:
-     - Dados da OC, linha, entrega e liberaÁ„o
-     - InformaÁıes do item, projeto e centro de custo
+  INFORMA√á√ïES RETORNADAS:
+     - Dados da OC, linha, entrega e libera√ß√£o
+     - Informa√ß√µes do item, projeto e centro de custo
      - Prazo de entrega previsto e lead time de contrato
      - Datas de recebimento (RECEIVE e DELIVER)
      - Status do RI, roteiros, aprovadores, valores
-     - SituaÁ„o do vÌnculo com RC (ausente)
+     - Situa√ß√£o do v√≠nculo com RC (ausente)
 
-  CLASSIFICA«√O:
-     - Tipo: DiagnÛstico Operacional
-     - MÛdulo: PO / RECEBIMENTO / GL / PROJETOS
-     - Origem: SolicitaÁ„o funcional (atendimento/fornecimento)
+  CLASSIFICA√á√ÉO:
+     - Tipo: Diagn√≥stico Operacional
+     - M√≥dulo: PO / RECEBIMENTO / GL / PROJETOS
+     - Origem: Solicita√ß√£o funcional (atendimento/fornecimento)
 
   AUTOR:      Adoniran Paim
-  VERS√O:     1.0
+  VERS√ÉO:     1.0
   DATA:       abril/2025
 -------------------------------------------------------------------------*/
 SELECT DISTINCT 
@@ -190,7 +190,7 @@ SELECT DISTINCT
                       AND NVL(Y.CANCEL_FLAG, 'N') = 'N'   -- DESCONSIDERAR LINHAS CANCELADAS                   
                       AND ROWNUM = 1), 0),
               1, 'Sim',
-                 'N„o'
+                 'N√£o'
                 )                                                                  "RC_TEM_LINHA_SERVICO",
        ' '                                                                         "PREPARADOR",
        ---
@@ -476,7 +476,7 @@ SELECT DISTINCT
                       AND NVL(Y.CANCEL_FLAG, 'N') = 'N'   -- DESCONSIDERAR LINHAS CANCELADAS                   
                       AND ROWNUM = 1), 0),
               1, 'Sim',
-                 'N„o'
+                 'N√£o'
              )                                                                     "RC_TEM_LINHA_SERVICO",
        ---
        ' '                                                                         "PREPARADOR",    
